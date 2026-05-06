@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ирээдүйн Өнгө - Мэргэжил Сонголт</title>
     
-    <!-- Maddoota ala (Scripts & Styles) -->
+    <!-- Nuurka iyo qaabka (Scripts & Styles) -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -14,7 +14,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <style>
-        /* Akkaataa barreeffamaa fi bifa (Fonts and Styles) */
+        /* Qaabka qoraalka (Fonts and Styles) */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         
         body {
@@ -44,7 +44,7 @@
     <div id="root"></div>
 
     <script type="text/babel">
-        // Komponantii muummee (Main App Component)
+        // Qaybta muhiimka ah ee abka (Main App Component)
         const { useState, useEffect, useRef } = React;
 
         const DRIVE_IMG = (id) => `https://lh3.googleusercontent.com/d/${id}`;
@@ -54,7 +54,8 @@
             TUSS_LOGO: DRIVE_IMG("1ZkV1lVo3HAdlkVLDsiL5nq1awg172er_"),
             SII_LOGO: DRIVE_IMG("128EtP9Q3zqEtSwpv5o1xFSOuZFrsQDxE"),
             MN_LAB_LOGO: DRIVE_IMG("1aoTmqEXwQ4Ee3cMsW8fwOroFNEyqXlxt"),
-            QR_CODE: DRIVE_IMG("1l5_CEs37ts75xh_QVEei2i9L1xWMngdH")
+            // Xidhiidhka QR code-ka cusub (New updated QR code link)
+            QR_CODE: DRIVE_IMG("1jDAlwpuNRiyQhfaj21Fffhp7b_6vghOQ")
         };
 
         const Icon = ({ name, size = 24, className = "" }) => {
@@ -68,7 +69,7 @@
             const [currentSlide, setCurrentSlide] = useState(0);
             const chartRef = useRef(null);
 
-            // Slides data (Mallattoo slide hundaa)
+            // Xogta bogagga (Slides data)
             const slides = [
                 {
                     title: "",
@@ -246,7 +247,7 @@
                 }
             ];
 
-            // Functions to change slides
+            // Shaqidaha lagu badalayo bogagga (Navigation functions)
             const nextSlide = () => {
                 if (currentSlide < slides.length - 1) {
                     setCurrentSlide(currentSlide + 1);
@@ -259,7 +260,7 @@
                 }
             };
 
-            // Keyboard listeners
+            // Dhagaysiga kiiboodhka (Keyboard listeners)
             useEffect(() => {
                 const handleKeyDown = (e) => {
                     if (e.key === 'ArrowRight') nextSlide();
@@ -269,7 +270,7 @@
                 return () => window.removeEventListener('keydown', handleKeyDown);
             }, [currentSlide]);
 
-            // Chart initialization
+            // Diyaarinta jaantuska (Chart initialization)
             useEffect(() => {
                 if (currentSlide === 5) {
                     const ctx = document.getElementById('hollandChart');
@@ -298,7 +299,7 @@
 
             return (
                 <div className="h-screen flex flex-col overflow-hidden">
-                    {/* Header */}
+                    {/* Madaxa (Header) */}
                     <header className="bg-white border-b-4 border-slate-900 px-6 py-4 flex justify-between items-center shrink-0">
                         <div className="flex gap-6 lg:gap-12 items-center">
                             <img src={IMAGES.MN_LAB_LOGO} className="h-12 lg:h-16 w-auto" alt="MN" />
@@ -311,7 +312,7 @@
                         </div>
                     </header>
 
-                    {/* Main Content */}
+                    {/* Qaybta dhexe (Main Content) */}
                     <main className="flex-1 flex items-center justify-center px-6 lg:px-12 relative overflow-hidden">
                         <div className="absolute top-0 -left-20 w-[400px] h-[400px] bg-yellow-50 rounded-full blur-[100px] opacity-40 animate-blob"></div>
                         <div className="absolute bottom-0 -right-20 w-[400px] h-[400px] bg-indigo-50 rounded-full blur-[100px] opacity-40 animate-blob animation-delay-2000"></div>
@@ -329,7 +330,7 @@
                         </div>
                     </main>
 
-                    {/* Footer Navigation */}
+                    {/* Badhamada hoose (Navigation Buttons) */}
                     <footer className="px-6 py-6 lg:py-10 flex justify-between items-center shrink-0 bg-white/50 backdrop-blur-sm">
                         <button 
                             onClick={prevSlide}
@@ -357,7 +358,7 @@
             );
         };
 
-        // Render the app
+        // Bilowga abka (App mounting)
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
